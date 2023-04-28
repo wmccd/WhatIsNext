@@ -1,12 +1,12 @@
 package com.wmccd.whatisnext.navigation
 
-import com.wmccd.configuration_keys.external.AppConfigurationKeys
+import com.wmccd.configuration_keys.external.TextConfigurationKeys
 import com.wmccd.whatisnext.MyApp
 import com.wmccd.whatisnext.R
 
 object HomeBarItem {
     val item = BarItem(
-        title = MyApp.remoteConfiguration.fetch(AppConfigurationKeys.Tabs.homeTabLabel, ""),
+        title = MyApp.remoteConfiguration.fetch(TextConfigurationKeys.Tabs.homeTabLabel, ""),
         imageId = R.drawable.ic_home,
         route = NavRoutes.Home.route
     )
@@ -14,7 +14,7 @@ object HomeBarItem {
 
 object RecordBarItem {
     val item = BarItem(
-        title = MyApp.remoteConfiguration.fetch(AppConfigurationKeys.Tabs.recordTabLabel, ""),
+        title = MyApp.remoteConfiguration.fetch(TextConfigurationKeys.Tabs.recordTabLabel, ""),
         imageId =  R.drawable.ic_album,
         route = NavRoutes.Records.route
     )
@@ -22,7 +22,7 @@ object RecordBarItem {
 
 object BookBarItem {
     val item = BarItem(
-        title = MyApp.remoteConfiguration.fetch(AppConfigurationKeys.Tabs.bookTabLabel, ""),
+        title = MyApp.remoteConfiguration.fetch(TextConfigurationKeys.Tabs.bookTabLabel, ""),
         imageId = R.drawable.ic_book,
         route = NavRoutes.Books.route
     )
@@ -30,7 +30,7 @@ object BookBarItem {
 
 object WeatherBarItem{
     val item = BarItem(
-        title = MyApp.remoteConfiguration.fetch(AppConfigurationKeys.Tabs.weatherTabLabel, ""),
+        title = MyApp.remoteConfiguration.fetch(TextConfigurationKeys.Tabs.weatherTabLabel, ""),
         imageId = R.drawable.ic_weather,
         route = NavRoutes.Weather.route
     )

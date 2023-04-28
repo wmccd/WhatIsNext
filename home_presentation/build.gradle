@@ -52,6 +52,8 @@ dependencies {
     implementation project(path: ':analogue_reporter')
     implementation project(path: ':book_domain')
     implementation project(path: ':record_domain')
+    implementation project(path: ':configuration')
+    implementation project(path: ':configuration_keys')
 
     testImplementation "junit:junit:$junit_junit_version"
     androidTestImplementation "androidx.test.ext:junit:$androidx_test_ext_junit_version"

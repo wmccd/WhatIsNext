@@ -21,6 +21,14 @@ internal class LaunchDarkly: ConfigurationVendor {
             "recordTabLabel" -> "Records"
             "bookTabLabel" -> "Books"
             "weatherTabLabel" -> "Weather"
+            "loadingMessage" -> "Loading..."
+            "erroringMessage" -> "Uh-oh...something went wrong"
+
+            "homeScreenTitle" -> "Counter of Things"
+            "bookCountLabel" -> "Book count: "
+            "recordCountLabel" -> "Record count: "
+
+
             else -> ""
         }
     }

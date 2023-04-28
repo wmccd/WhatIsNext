@@ -9,6 +9,8 @@ import androidx.lifecycle.viewModelScope
 import com.wmccd.analogue_reporter.external.AnalogueAction
 import com.wmccd.analogue_reporter.external.AnalogueReporter
 import com.wmccd.book_domain.external.usecases.BookCountUseCase
+import com.wmccd.configuration.external.RemoteConfiguration
+import com.wmccd.configuration_keys.external.TextConfigurationKeys
 import com.wmccd.home_presentation.external.homescreen.event.CounterEvent
 import com.wmccd.home_presentation.external.homescreen.state.CounterState
 import com.wmccd.home_presentation.external.homescreen.state.CounterStateWhenDisplaying
@@ -21,6 +23,7 @@ class CounterViewModelImpl(
     private val bookCountUseCase: BookCountUseCase,
     private val recordCountUseCase: RecordCountUseCase,
     private val analogueReporter: AnalogueReporter,
+    private val remoteConfiguration: RemoteConfiguration
 ): CounterViewModel, ViewModel() {
 
     /** State **/
@@ -29,23 +32,23 @@ class CounterViewModelImpl(
 
     private val _uiLoadingState = mutableStateOf(
         CounterStateWhenLoading(
-            message = "Loading"
+            message = remoteConfiguration.fetch(TextConfigurationKeys.ScreenLoading.loadingMessage, "")
         )
     )
     override val uiLoadingState: State<CounterStateWhenLoading> = _uiLoadingState
 
     private val _uiDisplayingState = mutableStateOf(
         CounterStateWhenDisplaying(
-            title = "The Mighty Bobbins Rides Again",
-            bookCountLabel = "Feel the bookish girth",
-            recordCountLabel = "Feel the record goodness",
+            title = remoteConfiguration.fetch(TextConfigurationKeys.HomeScreen.title, ""),
+            bookCountLabel = remoteConfiguration.fetch(TextConfigurationKeys.HomeScreen.bookCountLabel, ""),
+            recordCountLabel = remoteConfiguration.fetch(TextConfigurationKeys.HomeScreen.recordCountLabel, ""),
         )
     )
     override val uiDisplayState: State<CounterStateWhenDisplaying> = _uiDisplayingState
 
     private val _uiErroringState = mutableStateOf(
         CounterStateWhenErroring(
-            message = "Uh-oh...something went wrong"
+            message = remoteConfiguration.fetch(TextConfigurationKeys.ScreenErroring.erroringMessage, "")
         )
     )
     override val uiErroringState: State<CounterStateWhenErroring> = _uiErroringState

@@ -18,7 +18,8 @@ class CounterDependencyGenerator {
         return CounterViewModelImpl(
             bookCountUseCase = generateBookCountUseCase(),
             recordCountUseCase = generateRecordCountUseCase(),
-            analogueReporter = MyApp.analogueReporter
+            analogueReporter = MyApp.analogueReporter,
+            remoteConfiguration = MyApp.remoteConfiguration
         )
     }
 

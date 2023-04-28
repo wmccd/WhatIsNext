@@ -34,6 +34,7 @@ import com.wmccd.books.BookScreen
 import com.wmccd.home.external.HomeScreen
 import com.wmccd.records.external.RecordScreen
 import com.wmccd.weather.WeatherScreen
+import com.wmccd.whatisnext.MyApp.Companion.analogueReporter
 import com.wmccd.whatisnext.injection.CounterDependencyGenerator
 import com.wmccd.whatisnext.navigation.NavBarItems
 import com.wmccd.whatisnext.navigation.NavRoutes
@@ -49,7 +50,6 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    val analogueReporter = AnalogueReporterImpl()
                     analogueReporter.setup(hashMapOf(), debugMode = true)
                     analogueReporter.report(action = AnalogueAction.Event("XXX"))
                     MainScreen()

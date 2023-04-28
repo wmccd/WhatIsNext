@@ -16,20 +16,20 @@ import com.wmccd.home_presentation.external.homescreen.state.CounterStateWhenLoa
 
 
 @Composable
-fun HomeScreen(counterViewModel: CounterViewModel){
+fun HomeScreen(
+    counterViewModel: CounterViewModel
+){
 
     when(counterViewModel.currentState.value){
         is CounterState.Loading -> Loading(
-            counterViewModel.uiLoadingState.value,
-            counterViewModel::onEvent
+            counterViewModel.uiLoadingState.value
         )
         is CounterState.Display -> Displaying(
             counterViewModel.uiDisplayState.value,
             counterViewModel::onEvent
         )
         is CounterState.Error -> Erroring(
-            counterViewModel.uiErroringState.value,
-            counterViewModel::onEvent
+            counterViewModel.uiErroringState.value
         )
     }
 }
@@ -37,19 +37,16 @@ fun HomeScreen(counterViewModel: CounterViewModel){
 
 @Composable
 private fun Loading(
-    state: CounterStateWhenLoading,
-    onEvent: (CounterEvent)-> Unit
+    state: CounterStateWhenLoading
 ){
-    Text("Add a shimmer")
+    Text(state.message)
 }
 
 @Composable
 private fun Erroring(
-    state: CounterStateWhenErroring,
-    onEvent: (CounterEvent)-> Unit
+    state: CounterStateWhenErroring
 ){
-    Text("Add a uh-oh")
-
+    Text(state.message)
 }
 
 @Composable
@@ -57,10 +54,7 @@ private fun Displaying(
     state: CounterStateWhenDisplaying,
     onEvent: (CounterEvent)-> Unit
 ){
-    Log.d("XXX", "Display $state")
     Column(){
-        Text("Hello from Home")
-
         Text(
             state.bookCountLabel,
             color = state.bookCountLabelColour
