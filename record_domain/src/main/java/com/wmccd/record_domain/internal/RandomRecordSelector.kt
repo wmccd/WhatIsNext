@@ -1,11 +1,8 @@
 package com.wmccd.record_domain.internal
 
-import com.wmccd.analogue_reporter.external.AnalogueAction
-import com.wmccd.common_exceptions.InvalidRandomRecordException
+import com.wmccd.common_exceptions.external.InvalidRandomRecordException
 import com.wmccd.common_models.external.records.RecentRandomRecordModel
 import com.wmccd.common_models.external.records.RecordModel
-
-import java.lang.Exception
 
 class RandomRecordSelector {
 
