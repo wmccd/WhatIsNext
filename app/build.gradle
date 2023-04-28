@@ -1,0 +1,94 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    namespace 'com.wmccd.whatisnext'
+    compileSdk compileSdk_version
+
+    defaultConfig {
+        applicationId "com.wmccd.whatisnext"
+
+        minSdk minSdk_version
+        targetSdk targetSdk_version
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables {
+            useSupportLibrary true
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+//    compileOptions {
+//        sourceCompatibility JavaVersion.VERSION_1_8
+//        targetCompatibility JavaVersion.VERSION_1_8
+//    }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+    kotlinOptions {
+        jvmTarget = jvmTarget_version
+    }
+    buildFeatures {
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion kotlinCompilerExtensionVersion_version
+    }
+    packagingOptions {
+        resources {
+            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+        }
+    }
+}
+
+dependencies {
+
+    implementation "androidx.core:core-ktx:$androidx_core_core_ktx_version"
+    implementation "androidx.appcompat:appcompat:$androidx_appcompat_appcompat_version"
+    implementation "com.google.android.material:material:$com_google_android_material_material_version"
+
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$androidx_lifecycle_version"
+    implementation "androidx.activity:activity-compose:$androidx_activity_activity_compose_version"
+    implementation "androidx.compose.ui:ui:$compose_version"
+    implementation "androidx.compose.ui:ui-tooling:$compose_version"
+    implementation "androidx.compose.ui:ui-tooling-preview:$compose_version"
+    implementation "androidx.compose.material:material:$compose_version"
+    implementation "androidx.compose.material3:material3:$androidx_compose_material3_material3_version"
+    implementation "androidx.navigation:navigation-compose:$androidx_navigation_navigation_compose_version"
+    implementation project(path: ':record')
+    implementation project(path: ':book')
+    implementation project(path: ':weather')
+    implementation project(path: ':analogue_reporter')
+    implementation project(path: ':home')
+    implementation project(path: ':home_presentation')
+    implementation project(path: ':record_domain')
+    implementation project(path: ':datasource_datastore')
+    implementation project(path: ':book_presentation')
+    implementation project(path: ':record_presentation')
+    implementation project(path: ':book_domain')
+    implementation project(path: ':record_repository')
+    implementation project(path: ':datasource_room')
+    implementation project(path: ':common_models')
+    implementation project(path: ':book_repository')
+    implementation project(path: ':configuration_keys')
+    implementation project(path: ':configuration')
+
+
+    testImplementation "junit:junit:$junit_junit_version"
+    androidTestImplementation "androidx.test.ext:junit:$androidx_test_ext_junit_version"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$androidx_test_espresso_espresso_core_version"
+    androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
+    debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
+    debugImplementation "androidx.compose.ui:ui-test-manifest:$compose_version"
+
+}

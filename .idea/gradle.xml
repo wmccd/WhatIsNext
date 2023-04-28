@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleMigrationSettings" migrationVersion="1" />
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="testRunner" value="GRADLE" />
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/analogue_reporter" />
+            <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/book" />
+            <option value="$PROJECT_DIR$/book_domain" />
+            <option value="$PROJECT_DIR$/book_presentation" />
+            <option value="$PROJECT_DIR$/book_repository" />
+            <option value="$PROJECT_DIR$/common_exceptions" />
+            <option value="$PROJECT_DIR$/common_models" />
+            <option value="$PROJECT_DIR$/configuration" />
+            <option value="$PROJECT_DIR$/configuration_keys" />
+            <option value="$PROJECT_DIR$/datasource_datastore" />
+            <option value="$PROJECT_DIR$/datasource_room" />
+            <option value="$PROJECT_DIR$/home" />
+            <option value="$PROJECT_DIR$/home_presentation" />
+            <option value="$PROJECT_DIR$/record" />
+            <option value="$PROJECT_DIR$/record_domain" />
+            <option value="$PROJECT_DIR$/record_presentation" />
+            <option value="$PROJECT_DIR$/record_repository" />
+            <option value="$PROJECT_DIR$/weather" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>

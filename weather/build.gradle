@@ -1,0 +1,68 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    namespace 'com.wmccd.weather'
+    compileSdk compileSdk_version
+
+    defaultConfig {
+        minSdk minSdk_version
+        targetSdk targetSdk_version
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        debug{
+            testCoverageEnabled true
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+//    compileOptions {
+//        sourceCompatibility JavaVersion.VERSION_1_8
+//        targetCompatibility JavaVersion.VERSION_1_8
+//    }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+    kotlinOptions {
+        jvmTarget = jvmTarget_version
+    }
+    buildFeatures {
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion kotlinCompilerExtensionVersion_version
+    }
+}
+
+dependencies {
+    implementation "androidx.core:core-ktx:$androidx_core_core_ktx_version"
+    implementation "androidx.appcompat:appcompat:$androidx_appcompat_appcompat_version"
+    implementation "com.google.android.material:material:$com_google_android_material_material_version"
+
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$androidx_lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$androidx_lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-compose:$androidx_lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-runtime-compose:$androidx_lifecycle_version"
+
+
+    implementation "androidx.activity:activity-compose:$androidx_activity_activity_compose_version"
+    implementation "androidx.compose.ui:ui:$compose_version"
+    implementation "androidx.compose.ui:ui-tooling:$compose_version"
+    implementation "androidx.compose.ui:ui-tooling-preview:$compose_version"
+    implementation "androidx.compose.material3:material3:$androidx_compose_material3_material3_version"
+    implementation "androidx.navigation:navigation-compose:$androidx_navigation_navigation_compose_version"
+
+
+    testImplementation "junit:junit:$junit_junit_version"
+    androidTestImplementation "androidx.test.ext:junit:$androidx_test_ext_junit_version"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$androidx_test_espresso_espresso_core_version"
+}

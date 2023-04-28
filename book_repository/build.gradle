@@ -1,0 +1,49 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    namespace 'com.wmccd.book_repository'
+    compileSdk compileSdk_version
+
+    defaultConfig {
+        minSdk minSdk_version
+        targetSdk targetSdk_version
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        debug{
+            testCoverageEnabled true
+            debuggable true
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+    kotlinOptions {
+        jvmTarget = jvmTarget_version
+    }
+}
+
+dependencies {
+    implementation "androidx.core:core-ktx:$androidx_core_core_ktx_version"
+    implementation "androidx.appcompat:appcompat:$androidx_appcompat_appcompat_version"
+    implementation "com.google.android.material:material:$com_google_android_material_material_version"
+    implementation project(path: ':common_models')
+    implementation project(path: ':analogue_reporter')
+    implementation project(path: ':datasource_room')
+
+    testImplementation "junit:junit:$junit_junit_version"
+    androidTestImplementation "androidx.test.ext:junit:$androidx_test_ext_junit_version"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$androidx_test_espresso_espresso_core_version"
+    androidTestImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$org_jetbrains_kotlinx_kotlinx_coroutines_test_version"
+}
