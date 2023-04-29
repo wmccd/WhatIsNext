@@ -32,3 +32,5 @@ include ':home_presentation'
 include ':common_exceptions'
 include ':configuration'
 include ':configuration_keys'
+include ':common_ui'
+

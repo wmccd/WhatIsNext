@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace 'com.wmccd.home'
+    namespace 'com.wmccd.common_ui'
     compileSdk compileSdk_version
 
     defaultConfig {
@@ -60,9 +60,6 @@ dependencies {
     implementation "androidx.compose.ui:ui-tooling-preview:$compose_version"
     implementation "androidx.compose.material3:material3:$androidx_compose_material3_material3_version"
     implementation "androidx.navigation:navigation-compose:$androidx_navigation_navigation_compose_version"
-    implementation project(path: ':home_presentation')
-    implementation project(path: ':common_ui')
-
 
     testImplementation "junit:junit:$junit_junit_version"
     androidTestImplementation "androidx.test.ext:junit:$androidx_test_ext_junit_version"

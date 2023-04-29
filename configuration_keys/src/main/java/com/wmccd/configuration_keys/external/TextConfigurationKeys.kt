@@ -21,5 +21,6 @@ object TextConfigurationKeys {
         const val title = "homeScreenTitle"
         const val bookCountLabel = "bookCountLabel"
         const val recordCountLabel = "recordCountLabel"
+        const val changeColorButtonLabel = "changeColorButtonLabel"
     }
 }

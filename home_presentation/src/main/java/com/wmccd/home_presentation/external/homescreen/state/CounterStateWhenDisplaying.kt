@@ -4,10 +4,10 @@ import androidx.compose.ui.graphics.Color
 
 data class CounterStateWhenDisplaying(
     var title: String = "",
-    var bookCountLabelColour: Color = Color.DarkGray,
     var bookCountLabel: String = "",
     var bookCount: Int = 0,
-    var recordCountLabelColour: Color = Color.DarkGray,
     var recordCountLabel: String = "",
-    var recordCount: Int = 0
+    var recordCount: Int = 0,
+    var buttonLabel: String = "",
+    var backgroundColor: Color = Color.LightGray
 )

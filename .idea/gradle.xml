@@ -18,6 +18,7 @@
             <option value="$PROJECT_DIR$/book_repository" />
             <option value="$PROJECT_DIR$/common_exceptions" />
             <option value="$PROJECT_DIR$/common_models" />
+            <option value="$PROJECT_DIR$/common_ui" />
             <option value="$PROJECT_DIR$/configuration" />
             <option value="$PROJECT_DIR$/configuration_keys" />
             <option value="$PROJECT_DIR$/datasource_datastore" />

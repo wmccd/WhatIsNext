@@ -12,5 +12,5 @@ interface CounterViewModel {
     val uiLoadingState: State<CounterStateWhenLoading>
     val uiDisplayState: State<CounterStateWhenDisplaying>
     val uiErroringState: State<CounterStateWhenErroring>
-    fun onEvent(notesEvent: CounterEvent)
+    fun onEvent(event: CounterEvent)
 }

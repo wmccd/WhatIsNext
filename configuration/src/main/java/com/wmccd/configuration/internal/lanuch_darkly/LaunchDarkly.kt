@@ -27,7 +27,7 @@ internal class LaunchDarkly: ConfigurationVendor {
             "homeScreenTitle" -> "Counter of Things"
             "bookCountLabel" -> "Book count: "
             "recordCountLabel" -> "Record count: "
-
+            "changeColorButtonLabel" -> "Change Background Colour"
 
             else -> ""
         }

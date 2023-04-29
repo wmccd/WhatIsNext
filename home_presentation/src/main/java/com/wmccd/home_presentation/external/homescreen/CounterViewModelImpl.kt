@@ -42,6 +42,7 @@ class CounterViewModelImpl(
             title = remoteConfiguration.fetch(TextConfigurationKeys.HomeScreen.title, ""),
             bookCountLabel = remoteConfiguration.fetch(TextConfigurationKeys.HomeScreen.bookCountLabel, ""),
             recordCountLabel = remoteConfiguration.fetch(TextConfigurationKeys.HomeScreen.recordCountLabel, ""),
+            buttonLabel = remoteConfiguration.fetch(TextConfigurationKeys.HomeScreen.changeColorButtonLabel, ""),
         )
     )
     override val uiDisplayState: State<CounterStateWhenDisplaying> = _uiDisplayingState
@@ -66,7 +67,7 @@ class CounterViewModelImpl(
                 )
             )
 
-            _currentState.value = CounterState.Display
+            _currentState.value = CounterState.Displaying
             _uiDisplayingState.value = _uiDisplayingState.value.copy(
                 bookCount = it
             )
@@ -95,39 +96,24 @@ class CounterViewModelImpl(
     /** Events **/
     override fun onEvent(counterEvent: CounterEvent) {
         when(counterEvent){
-            CounterEvent.OnBookCountTapped -> handleOnBookCountTapped()
-            CounterEvent.OnRecordCountTapped -> hanOnRecordCountTapped()
+            CounterEvent.OnColorChangeButtonTapped -> handleOnColorChangeButtonTapped()
         }
     }
 
-    private fun hanOnRecordCountTapped() {
+    private fun handleOnColorChangeButtonTapped() {
 
         analogueReporter.report(
             action = AnalogueAction.Trace(
                 tag = "${this::class.simpleName}",
-                whatHappened = "Presentation: tapped record count",
+                whatHappened = "Presentation: colour change ",
             )
         )
 
         _uiDisplayingState.value = _uiDisplayingState.value.copy(
-            recordCountLabelColour = randomColor()
+            backgroundColor = randomColor()
         )
     }
 
-    private fun handleOnBookCountTapped() {
-
-        analogueReporter.report(
-            action = AnalogueAction.Trace(
-                tag = "${this::class.simpleName}",
-                whatHappened = "Presentation: tapped book count",
-            )
-        )
-
-        _uiDisplayingState.value = _uiDisplayingState.value.copy(
-            bookCountLabelColour = randomColor()
-        )
-
-    }
 
     private fun randomColor(): Color{
         val colours = listOf<Color>(

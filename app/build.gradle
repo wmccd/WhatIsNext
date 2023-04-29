@@ -82,6 +82,7 @@ dependencies {
     implementation project(path: ':book_repository')
     implementation project(path: ':configuration_keys')
     implementation project(path: ':configuration')
+    implementation project(path: ':common_ui')
 
 
     testImplementation "junit:junit:$junit_junit_version"
