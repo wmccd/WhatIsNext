@@ -29,16 +29,16 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.wmccd.analogue_reporter.external.AnalogueAction
-import com.wmccd.analogue_reporter.external.AnalogueReporterImpl
 import com.wmccd.books.BookScreen
 import com.wmccd.home.external.HomeScreen
 import com.wmccd.records.external.RecordScreen
 import com.wmccd.weather.WeatherScreen
-import com.wmccd.whatisnext.MyApp.Companion.analogueReporter
+import com.wmccd.whatisnext.MyApp.Companion.appAnalogueReporter
 import com.wmccd.whatisnext.injection.CounterDependencyGenerator
 import com.wmccd.whatisnext.navigation.NavBarItems
 import com.wmccd.whatisnext.navigation.NavRoutes
 import com.wmccd.whatisnext.ui.theme.WhatIsNextTheme
+
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,8 +50,8 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    analogueReporter.setup(hashMapOf(), debugMode = true)
-                    analogueReporter.report(action = AnalogueAction.Event("XXX"))
+                    appAnalogueReporter.setup(hashMapOf(), debugMode = true)
+                    appAnalogueReporter.report(action = AnalogueAction.Event("XXX"))
                     MainScreen()
                 }
             }

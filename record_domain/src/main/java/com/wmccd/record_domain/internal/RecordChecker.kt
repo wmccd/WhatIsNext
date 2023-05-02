@@ -2,7 +2,7 @@ package com.wmccd.record_domain.internal
 
 import com.wmccd.common_exceptions.external.model_validation.InvalidRecordActException
 import com.wmccd.common_exceptions.external.model_validation.InvalidRecordTitleException
-import com.wmccd.common_models.external.records.RecordModel
+import com.wmccd.common_models_types.external.models.records.RecordModel
 
 internal class RecordChecker {
 

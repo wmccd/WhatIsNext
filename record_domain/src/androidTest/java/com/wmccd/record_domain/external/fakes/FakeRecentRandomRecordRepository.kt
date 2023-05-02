@@ -1,6 +1,6 @@
 package com.wmccd.record_domain.external.fakes
 
-import com.wmccd.common_models.external.records.RecentRandomRecordModel
+import com.wmccd.common_models_types.external.models.records.RecentRandomRecordModel
 import com.wmccd.record_repository.external.RecentRandomRecordRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow

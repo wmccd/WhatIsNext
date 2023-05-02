@@ -1,6 +1,6 @@
 package com.wmccd.book_repository.external
 
-import com.wmccd.common_models.external.books.BookModel
+import com.wmccd.common_models_types.external.models.books.BookModel
 import kotlinx.coroutines.flow.Flow
 
 interface BookRepository {

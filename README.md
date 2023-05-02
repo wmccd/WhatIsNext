@@ -9,7 +9,11 @@ Unless this looks and behaves like a finished app...it's probably not.
 
 To Do...
 
+Add a splash
+
 Weather - api calls
+
+API calls need configuration (URLs etc) inject Configuration at UseCase layer based on?
 
 Navigation - nav controller - one or more?
 

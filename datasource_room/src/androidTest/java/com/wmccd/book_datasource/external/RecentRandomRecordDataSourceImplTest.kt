@@ -4,7 +4,7 @@ import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.wmccd.book_datasource.external.fakes.FakeAnalogueReporter
 import com.wmccd.book_datasource.internal.WhatIsNextDatabase
-import com.wmccd.common_models.external.records.RecentRandomRecordModel
+import com.wmccd.common_models_types.external.models.records.RecentRandomRecordModel
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.runTest
 
@@ -62,10 +62,12 @@ class RecentRandomRecordDataSourceImplTest {
         //author
         recentRandomRecordDataSource.insert(recentRandomRecordModel = RecentRandomRecordModel(
             timestamp = 1L
-        ))
+        )
+        )
         recentRandomRecordDataSource.insert(recentRandomRecordModel = RecentRandomRecordModel(
             timestamp = 2L
-        ))
+        )
+        )
         actual = recentRandomRecordDataSource.count.first()
 
         //assert

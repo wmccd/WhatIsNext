@@ -1,8 +1,8 @@
 package com.wmccd.record_domain.internal
 
 import com.wmccd.common_exceptions.external.InvalidRandomRecordException
-import com.wmccd.common_models.external.records.RecentRandomRecordModel
-import com.wmccd.common_models.external.records.RecordModel
+import com.wmccd.common_models_types.external.models.records.RecentRandomRecordModel
+import com.wmccd.common_models_types.external.models.records.RecordModel
 
 class RandomRecordSelector {
 
@@ -11,7 +11,7 @@ class RandomRecordSelector {
         windowSize: Int,
         records: List<RecordModel>,
         report:() -> Unit
-    ): RecordModel{
+    ): RecordModel {
         val choices = generateEligibleRandomRecordChoices(
             recentRecords = recentRecords,
             windowSize = windowSize,

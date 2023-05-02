@@ -1,7 +1,7 @@
 package com.wmccd.book_datasource.internal.converters
 
 import com.wmccd.book_datasource.internal.records.RecordEntity
-import com.wmccd.common_models.external.records.RecordModel
+import com.wmccd.common_models_types.external.models.records.RecordModel
 
 internal class RecordEntityAndModelConverter {
 

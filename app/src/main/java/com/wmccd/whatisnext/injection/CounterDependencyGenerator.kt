@@ -18,26 +18,26 @@ class CounterDependencyGenerator {
         return CounterViewModelImpl(
             bookCountUseCase = generateBookCountUseCase(),
             recordCountUseCase = generateRecordCountUseCase(),
-            analogueReporter = MyApp.analogueReporter,
-            remoteConfiguration = MyApp.remoteConfiguration
+            analogueReporter = MyApp.appAnalogueReporter,
+            remoteConfiguration = MyApp.appRemoteConfiguration
         )
     }
 
     private fun generateBookCountUseCase(): BookCountUseCase {
         val bookDataSource = BookDataSourceImpl(
             context = MyApp.context,
-            analogueReporter = MyApp.analogueReporter
+            analogueReporter = MyApp.appAnalogueReporter
         )
 
         val bookRepository = BookRepositoryImpl(
             dataSource = bookDataSource,
-            analogueReporter = MyApp.analogueReporter,
+            analogueReporter = MyApp.appAnalogueReporter,
             dispatcher = Dispatchers.IO
         )
 
         return BookCountUseCaseImpl(
             bookRepository = bookRepository,
-            analogueReporter = MyApp.analogueReporter,
+            analogueReporter = MyApp.appAnalogueReporter,
             dispatcher = Dispatchers.Default
         )
     }
@@ -45,18 +45,18 @@ class CounterDependencyGenerator {
     private fun generateRecordCountUseCase(): RecordCountUseCase {
         val recordDataSource = RecordDataSourceImpl(
             context = MyApp.context,
-            analogueReporter = MyApp.analogueReporter
+            analogueReporter = MyApp.appAnalogueReporter
         )
 
         val recordRepository = RecordRepositoryImpl(
             dataSource = recordDataSource,
-            analogueReporter = MyApp.analogueReporter,
+            analogueReporter = MyApp.appAnalogueReporter,
             dispatcher = Dispatchers.IO
         )
 
         return RecordCountUseCaseImpl(
             recordRepository = recordRepository,
-            analogueReporter = MyApp.analogueReporter,
+            analogueReporter = MyApp.appAnalogueReporter,
             dispatcher = Dispatchers.Default
         )
     }

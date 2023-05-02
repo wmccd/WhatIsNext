@@ -1,7 +1,7 @@
 package com.wmccd.book_repository.external.fakes
 
 import com.wmccd.book_datasource.external.BookDataSource
-import com.wmccd.common_models.external.books.BookModel
+import com.wmccd.common_models_types.external.models.books.BookModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 

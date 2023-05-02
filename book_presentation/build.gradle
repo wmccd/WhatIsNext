@@ -43,7 +43,7 @@ dependencies {
     implementation "androidx.appcompat:appcompat:$androidx_appcompat_appcompat_version"
     implementation "com.google.android.material:material:$com_google_android_material_material_version"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$androidx_lifecycle_version"
-    implementation project(path: ':common_models')
+    implementation project(path: ':common_models_types')
     implementation project(path: ':analogue_reporter')
     implementation project(path: ':book_domain')
 

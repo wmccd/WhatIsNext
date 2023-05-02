@@ -1,7 +1,7 @@
 package com.wmccd.record_repository.external
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.wmccd.common_models.external.records.RecentRandomRecordModel
+import com.wmccd.common_models_types.external.models.records.RecentRandomRecordModel
 import com.wmccd.record_repository.external.fakes.FakeAnalogueReporter
 import com.wmccd.record_repository.external.fakes.FakeRecentRandomRecordsDataSource
 import kotlinx.coroutines.ExperimentalCoroutinesApi

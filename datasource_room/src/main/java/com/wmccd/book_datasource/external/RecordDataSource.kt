@@ -1,6 +1,6 @@
 package com.wmccd.book_datasource.external
 
-import com.wmccd.common_models.external.records.RecordModel
+import com.wmccd.common_models_types.external.models.records.RecordModel
 import kotlinx.coroutines.flow.Flow
 
 interface RecordDataSource {

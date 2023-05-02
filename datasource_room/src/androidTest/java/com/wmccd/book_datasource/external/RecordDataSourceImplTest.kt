@@ -1,16 +1,11 @@
 package com.wmccd.book_datasource.external
 
-import android.util.Log
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.wmccd.book_datasource.external.fakes.FakeAnalogueReporter
 import com.wmccd.book_datasource.internal.WhatIsNextDatabase
-import com.wmccd.common_models.external.records.RecordModel
-import kotlinx.coroutines.async
-import kotlinx.coroutines.delay
+import com.wmccd.common_models_types.external.models.records.RecordModel
 import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.test.runTest
 
 import org.junit.Test

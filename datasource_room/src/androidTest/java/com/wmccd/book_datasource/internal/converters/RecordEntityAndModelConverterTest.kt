@@ -2,7 +2,7 @@ package com.wmccd.book_datasource.internal.converters
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.wmccd.book_datasource.internal.records.RecordEntity
-import com.wmccd.common_models.external.records.RecordModel
+import com.wmccd.common_models_types.external.models.records.RecordModel
 import org.junit.Assert
 import org.junit.Test
 import org.junit.runner.RunWith

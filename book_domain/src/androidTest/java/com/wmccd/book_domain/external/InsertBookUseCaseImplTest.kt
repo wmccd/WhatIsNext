@@ -4,7 +4,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.wmccd.book_domain.external.fakes.FakeAnalogueReporter
 import com.wmccd.book_domain.external.fakes.FakeBookRepository
 import com.wmccd.book_domain.external.usecases.InsertBookUseCaseImpl
-import com.wmccd.common_models.external.books.BookModel
+import com.wmccd.common_models_types.external.models.books.BookModel
 import kotlinx.coroutines.test.StandardTestDispatcher
 import kotlinx.coroutines.test.runTest
 

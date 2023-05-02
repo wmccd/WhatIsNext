@@ -1,7 +1,7 @@
 package com.wmccd.book_datasource.internal.converters
 
 import com.wmccd.book_datasource.internal.records.RecentRandomRecordEntity
-import com.wmccd.common_models.external.records.RecentRandomRecordModel
+import com.wmccd.common_models_types.external.models.records.RecentRandomRecordModel
 
 internal class RecentRandomRecordEntityAndModelConverter {
 

@@ -4,7 +4,7 @@ import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.wmccd.book_datasource.external.fakes.FakeAnalogueReporter
 import com.wmccd.book_datasource.internal.WhatIsNextDatabase
-import com.wmccd.common_models.external.books.BookModel
+import com.wmccd.common_models_types.external.models.books.BookModel
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.runTest
 

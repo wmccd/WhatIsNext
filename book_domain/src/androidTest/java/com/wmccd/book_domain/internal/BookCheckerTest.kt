@@ -1,9 +1,9 @@
 package com.wmccd.book_domain.internal
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.wmccd.common_models.external.books.BookModel
-import com.wmccd.common_models.external.books.InvalidBookAuthorException
-import com.wmccd.common_models.external.books.InvalidBookTitleException
+import com.wmccd.common_models_types.external.models.books.BookModel
+import com.wmccd.common_models_types.external.books.InvalidBookAuthorException
+import com.wmccd.common_models_types.external.books.InvalidBookTitleException
 import kotlinx.coroutines.test.runTest
 
 import org.junit.Test

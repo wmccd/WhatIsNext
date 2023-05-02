@@ -1,9 +1,8 @@
 package com.wmccd.record_domain.internal
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.wmccd.common_models.external.records.RecentRandomRecordModel
-import com.wmccd.common_models.external.records.RecordModel
-import kotlinx.coroutines.flow.flow
+import com.wmccd.common_models_types.external.models.records.RecentRandomRecordModel
+import com.wmccd.common_models_types.external.models.records.RecordModel
 import kotlinx.coroutines.test.advanceUntilIdle
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert

@@ -27,10 +27,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-//    compileOptions {
-//        sourceCompatibility JavaVersion.VERSION_1_8
-//        targetCompatibility JavaVersion.VERSION_1_8
-//    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
@@ -40,6 +36,7 @@ android {
     }
     buildFeatures {
         compose true
+        buildConfig = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion kotlinCompilerExtensionVersion_version
@@ -78,7 +75,7 @@ dependencies {
     implementation project(path: ':book_domain')
     implementation project(path: ':record_repository')
     implementation project(path: ':datasource_room')
-    implementation project(path: ':common_models')
+    implementation project(path: ':common_models_types')
     implementation project(path: ':book_repository')
     implementation project(path: ':configuration_keys')
     implementation project(path: ':configuration')

@@ -3,7 +3,7 @@ package com.wmccd.record_domain.external.usescases
 
 import com.wmccd.analogue_reporter.external.AnalogueAction
 import com.wmccd.analogue_reporter.external.AnalogueReporter
-import com.wmccd.common_models.external.records.RecordModel
+import com.wmccd.common_models_types.external.models.records.RecordModel
 import com.wmccd.record_domain.internal.RandomRecordSelector
 import com.wmccd.record_repository.external.RecentRandomRecordRepository
 import com.wmccd.record_repository.external.RecentRandomRecordSettingsRepository
@@ -11,6 +11,7 @@ import com.wmccd.record_repository.external.RecordRepository
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.withContext
 
 class RandomRecordUseCaseImpl(
     private val recordRepository: RecordRepository,
@@ -28,12 +29,14 @@ class RandomRecordUseCaseImpl(
             recentRandomRecordsRepository.recentRandomRecords,
             recentRandomRecordSettingsRepository.recentRandomRecordsWindowSize
         ) { records, recentRecords, windowSize ->
-            randomRecord = RandomRecordSelector().select(
-                recentRecords= recentRecords,
-                windowSize = windowSize,
-                records= records,
-                report = ::report
-            )
+            randomRecord = withContext(dispatcher) {
+                RandomRecordSelector().select(
+                    recentRecords = recentRecords,
+                    windowSize = windowSize,
+                    records = records,
+                    report = ::report
+                )
+            }
         }
         return randomRecord
     }

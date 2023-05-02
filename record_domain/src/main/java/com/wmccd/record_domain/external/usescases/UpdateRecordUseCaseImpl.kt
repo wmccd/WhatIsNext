@@ -2,7 +2,7 @@ package com.wmccd.record_domain.external.usescases
 
 import com.wmccd.analogue_reporter.external.AnalogueAction
 import com.wmccd.analogue_reporter.external.AnalogueReporter
-import com.wmccd.common_models.external.records.RecordModel
+import com.wmccd.common_models_types.external.models.records.RecordModel
 import com.wmccd.record_domain.internal.RecordChecker
 import com.wmccd.record_repository.external.RecordRepository
 import kotlinx.coroutines.CoroutineDispatcher

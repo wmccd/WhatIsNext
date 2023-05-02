@@ -1,7 +1,7 @@
 package com.wmccd.record_repository.external.fakes
 
 import com.wmccd.book_datasource.external.RecordDataSource
-import com.wmccd.common_models.external.records.RecordModel
+import com.wmccd.common_models_types.external.models.records.RecordModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
