@@ -8,7 +8,8 @@ import com.wmccd.common_models_types.external.types.ResponseType
 data class RequestModel(
     val methodType: RequestMethodType,
     val contentType: RequestContentType,
-    val url: String,
+    val urlDomain: String,
+    val urlPath:String,
     val headers: HashMap<String, String> = hashMapOf(),
     val queryParameters: HashMap<String, String> = hashMapOf(),
     val bodyMap: HashMap<String, String> = hashMapOf(),

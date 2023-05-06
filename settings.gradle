@@ -36,3 +36,4 @@ include ':common_ui'
 
 include ':weather_repository'
 include ':weather_domain'
+include ':datasource_services'

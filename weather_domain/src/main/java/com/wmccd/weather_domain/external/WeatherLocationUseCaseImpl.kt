@@ -1,4 +1,4 @@
-package com.wmccd.weather_domain
+package com.wmccd.weather_domain.external
 
 import com.wmccd.analogue_reporter.external.AnalogueReporter
 import com.wmccd.common_models_types.external.models.weather.LocationModel

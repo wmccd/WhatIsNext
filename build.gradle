@@ -28,8 +28,14 @@ buildscript {
         //datastore
         datastore_version = "1.1.0-alpha04"
 
+        //retrofit
+        retrofit2_version = "2.9.0"
+        okhttp3_version = "3.10.0"
+        gson_version = "2.10.1"
+        okhttp3_logging_version = "3.9.0"
+
         //material
-        com_google_android_material_material_version = "1.8.0"
+        com_google_android_material_material_version = "1.9.0"
         androidx_compose_material3_material3_version = "1.1.0-beta02"
 
         //lifecycle
@@ -46,12 +52,13 @@ buildscript {
         room_version = "2.5.1"
 
         //testing
+        mockk_version  = "1.12.5"
         junit_junit_version = "4.13.2"
         androidx_test_ext_junit_version = "1.1.5"
         androidx_test_espresso_espresso_core_version = "3.5.1"
         org_jetbrains_kotlinx_kotlinx_coroutines_test_version = "1.6.4"
-
     }
+
 }
 
 plugins {

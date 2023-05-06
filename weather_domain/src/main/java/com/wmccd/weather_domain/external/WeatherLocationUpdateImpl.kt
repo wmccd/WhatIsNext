@@ -1,4 +1,4 @@
-package com.wmccd.weather_domain
+package com.wmccd.weather_domain.external
 
 import com.wmccd.analogue_reporter.external.AnalogueAction
 import com.wmccd.analogue_reporter.external.AnalogueReporter

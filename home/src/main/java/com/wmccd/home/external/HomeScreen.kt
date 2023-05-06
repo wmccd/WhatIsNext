@@ -40,6 +40,7 @@ const val HomeScreenTestTag = "HomeScreen"
 fun HomeScreen(
     counterViewModel: CounterViewModel
 ){
+
     Box(
         modifier = Modifier
             .fillMaxSize()
