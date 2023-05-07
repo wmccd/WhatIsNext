@@ -5,15 +5,11 @@ import com.wmccd.book_domain.external.fakes.FakeAnalogueReporter
 import com.wmccd.book_domain.external.fakes.FakeBookRepository
 import com.wmccd.book_domain.external.fakes.FakeBookRepositoryWithNoBooks
 import com.wmccd.book_domain.external.usecases.RandomBookUseCaseImpl
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.StandardTestDispatcher
 import kotlinx.coroutines.test.runTest
-
+import org.junit.Assert.*
 import org.junit.Test
 import org.junit.runner.RunWith
-
-import org.junit.Assert.*
-import java.lang.Exception
 import java.util.concurrent.CountDownLatch
 import java.util.concurrent.TimeUnit
 

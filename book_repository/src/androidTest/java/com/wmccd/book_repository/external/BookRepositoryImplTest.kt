@@ -1,9 +1,9 @@
 package com.wmccd.book_repository.external
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.wmccd.common_models_types.external.models.books.BookModel
 import com.wmccd.book_repository.external.fakes.FakeAnalogueReporter
 import com.wmccd.book_repository.external.fakes.FakeBookDataSource
+import com.wmccd.common_models_types.external.models.books.BookModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.StandardTestDispatcher

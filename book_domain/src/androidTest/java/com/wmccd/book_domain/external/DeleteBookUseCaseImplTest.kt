@@ -1,25 +1,14 @@
 package com.wmccd.book_domain.external
 
-import android.util.Log
-import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.wmccd.book_domain.external.fakes.FakeAnalogueReporter
 import com.wmccd.book_domain.external.fakes.FakeBookRepository
-import com.wmccd.book_domain.external.usecases.AllBooksUseCaseImpl
 import com.wmccd.book_domain.external.usecases.DeleteBookUseCaseImpl
-import kotlinx.coroutines.async
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.StandardTestDispatcher
-import kotlinx.coroutines.test.advanceUntilIdle
 import kotlinx.coroutines.test.runTest
-
+import org.junit.Assert.*
 import org.junit.Test
 import org.junit.runner.RunWith
-
-import org.junit.Assert.*
-import java.util.concurrent.CountDownLatch
-import java.util.concurrent.TimeUnit
 
 /**
  * Instrumented test, which will execute on an Android device.

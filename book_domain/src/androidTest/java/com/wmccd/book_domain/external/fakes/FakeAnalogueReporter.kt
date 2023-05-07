@@ -1,6 +1,5 @@
 package com.wmccd.book_domain.external.fakes
 
-import android.util.Log
 import com.wmccd.analogue_reporter.external.AnalogueAction
 import com.wmccd.analogue_reporter.external.AnalogueReporter
 

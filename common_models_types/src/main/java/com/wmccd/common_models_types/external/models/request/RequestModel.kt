@@ -1,9 +1,8 @@
 package com.wmccd.common_models_types.external.models.request
 
+import com.wmccd.common_models_types.external.types.ResponseType
 import com.wmccd.common_models_types.external.types.request.RequestContentType
 import com.wmccd.common_models_types.external.types.request.RequestMethodType
-import com.wmccd.common_models_types.external.BaseModelType
-import com.wmccd.common_models_types.external.types.ResponseType
 
 data class RequestModel(
     val methodType: RequestMethodType,
@@ -15,5 +14,5 @@ data class RequestModel(
     val bodyMap: HashMap<String, String> = hashMapOf(),
     val bodyJson: String = "",
     val success: (response: ResponseType) -> Unit,
-    val failure: (code: Int, message: String) -> Unit
+    val failure: (response: ResponseType.ErrorResponse) -> Unit,
 )

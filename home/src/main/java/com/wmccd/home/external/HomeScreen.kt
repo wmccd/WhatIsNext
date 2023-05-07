@@ -21,16 +21,14 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.modifier.modifierLocalProvider
 import androidx.compose.ui.platform.testTag
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import com.wmccd.common_ui.external.values.Padding
 import com.wmccd.common_ui.external.views.LabelAndValue
-import com.wmccd.home_presentation.external.homescreen.event.CounterEvent
-import com.wmccd.home_presentation.external.homescreen.state.CounterStateWhenDisplaying
 import com.wmccd.home_presentation.external.homescreen.CounterViewModel
+import com.wmccd.home_presentation.external.homescreen.event.CounterEvent
 import com.wmccd.home_presentation.external.homescreen.state.CounterState
+import com.wmccd.home_presentation.external.homescreen.state.CounterStateWhenDisplaying
 import com.wmccd.home_presentation.external.homescreen.state.CounterStateWhenErroring
 import com.wmccd.home_presentation.external.homescreen.state.CounterStateWhenLoading
 

@@ -1,23 +1,17 @@
 package com.wmccd.whatisnext.home
 
-import android.util.Log
 import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.createComposeRule
-import com.wmccd.common_ui.external.views.LabelAndValue
-import com.wmccd.common_ui.external.views.LabelAndValueTestTag
+import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.wmccd.home.external.HomeScreen
 import com.wmccd.whatisnext.home.fakes.FakeDisplayingViewModel
 import com.wmccd.whatisnext.home.fakes.FakeErroringViewModel
 import com.wmccd.whatisnext.home.fakes.FakeLoadingCounterViewModel
-import org.junit.Assert
-
-import org.junit.Test
-import org.junit.runner.RunWith
-
 import org.junit.Assert.*
 import org.junit.Rule
+import org.junit.Test
+import org.junit.runner.RunWith
 
 /**
  * Instrumented test, which will execute on an Android device.

@@ -7,11 +7,9 @@ import com.wmccd.record_domain.external.fakes.FakeRecordRepository
 import com.wmccd.record_domain.external.usescases.InsertRecordUseCaseImpl
 import kotlinx.coroutines.test.StandardTestDispatcher
 import kotlinx.coroutines.test.runTest
-
+import org.junit.Assert.*
 import org.junit.Test
 import org.junit.runner.RunWith
-
-import org.junit.Assert.*
 import java.util.concurrent.CountDownLatch
 import java.util.concurrent.TimeUnit
 

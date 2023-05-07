@@ -1,15 +1,13 @@
 package com.wmccd.analogue_reporter
 
-import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.platform.app.InstrumentationRegistry
 import com.wmccd.analogue_reporter.external.AnalogueAction
 import com.wmccd.analogue_reporter.external.AnalogueReporterImpl
 import org.junit.Assert
-
+import org.junit.Assert.*
 import org.junit.Test
 import org.junit.runner.RunWith
-
-import org.junit.Assert.*
 
 /**
  * Instrumented test, which will execute on an Android device.

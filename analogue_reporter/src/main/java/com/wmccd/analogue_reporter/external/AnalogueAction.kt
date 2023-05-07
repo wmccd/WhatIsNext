@@ -1,7 +1,5 @@
 package com.wmccd.analogue_reporter.external
 
-import java.util.HashMap
-
 sealed class AnalogueAction{
     data class Property(val key: String, val value: Any): AnalogueAction()
     data class Properties(val keyValues: HashMap<String, Any>): AnalogueAction()

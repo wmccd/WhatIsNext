@@ -2,12 +2,11 @@ package com.wmccd.book_domain.external.usecases
 
 import com.wmccd.analogue_reporter.external.AnalogueAction
 import com.wmccd.analogue_reporter.external.AnalogueReporter
-import com.wmccd.common_models_types.external.models.books.BookModel
 import com.wmccd.book_repository.external.BookRepository
+import com.wmccd.common_models_types.external.models.books.BookModel
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first
-import java.lang.Exception
 
 class RandomBookUseCaseImpl(
     private val bookRepository: BookRepository,

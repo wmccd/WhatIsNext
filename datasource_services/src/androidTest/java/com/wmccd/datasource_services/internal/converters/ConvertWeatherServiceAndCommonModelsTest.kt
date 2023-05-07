@@ -1,18 +1,13 @@
-package com.wmccd.datasource_services.internal.services.converters
+package com.wmccd.datasource_services.internal.converters
 
-import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.wmccd.datasource_services.internal.services.weather.WeatherCall
 import com.wmccd.datasource_services.internal.services.weather.models.HourlyResponse
 import com.wmccd.datasource_services.internal.services.weather.models.HourlyUnitsResponse
 import com.wmccd.datasource_services.internal.services.weather.models.WeatherResponse
 import kotlinx.coroutines.test.runTest
-import org.junit.Assert
-
+import org.junit.Assert.*
 import org.junit.Test
 import org.junit.runner.RunWith
-
-import org.junit.Assert.*
 
 /**
  * Instrumented test, which will execute on an Android device.
@@ -24,7 +19,7 @@ class ConvertWeatherServiceAndCommonModelsTest {
 
     private val hourlyResponse = HourlyResponse(
         precipitationProbability = listOf(1, 2, 3),
-        temperature2m = listOf(1.1, 2.2, 3.3 ),
+        temperature2m = listOf(1.1, 2.2, 3.3),
         time = listOf("A", "B", "C")
     )
 
@@ -47,7 +42,7 @@ class ConvertWeatherServiceAndCommonModelsTest {
     )
 
     @Test
-    fun convert_emptyHourly_empty() = runTest{
+    fun convert_emptyHourly_empty() = runTest {
 
         //assemble
         val converter = ConvertWeatherServiceAndCommonModels()
@@ -63,8 +58,8 @@ class ConvertWeatherServiceAndCommonModelsTest {
         assertEquals(weatherResponse.timezone, actual.timezone)
         assertEquals(weatherResponse.timezoneAbbreviation, actual.timezoneAbbreviation)
         assertEquals(weatherResponse.utcOffsetSeconds, actual.utcOffsetSeconds)
-        assertEquals(weatherResponse.hourlyUnits.time, actual.hourlyUnits.time,)
-        assertEquals(weatherResponse.hourlyUnits.temperature2m, actual.hourlyUnits.temperature2m,)
+        assertEquals(weatherResponse.hourlyUnits.time, actual.hourlyUnits.time)
+        assertEquals(weatherResponse.hourlyUnits.temperature2m, actual.hourlyUnits.temperature2m)
         assertEquals(weatherResponse.hourlyUnits.precipitationProbability, actual.hourlyUnits.precipitationProbability,)
         assertEquals(weatherResponse.hourly.time.size, actual.hourly.time.size)
         assertEquals(weatherResponse.hourly.precipitationProbability.size, actual.hourly.precipitationProbability.size)

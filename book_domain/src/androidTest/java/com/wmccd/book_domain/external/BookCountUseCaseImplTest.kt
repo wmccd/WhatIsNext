@@ -4,15 +4,12 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.wmccd.book_domain.external.fakes.FakeAnalogueReporter
 import com.wmccd.book_domain.external.fakes.FakeBookRepository
 import com.wmccd.book_domain.external.usecases.BookCountUseCaseImpl
-import com.wmccd.book_repository.external.BookRepository
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.StandardTestDispatcher
 import kotlinx.coroutines.test.runTest
-
+import org.junit.Assert.*
 import org.junit.Test
 import org.junit.runner.RunWith
-
-import org.junit.Assert.*
 
 /**
  * Instrumented test, which will execute on an Android device.

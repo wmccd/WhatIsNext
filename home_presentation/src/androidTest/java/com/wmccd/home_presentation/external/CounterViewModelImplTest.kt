@@ -4,14 +4,12 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.wmccd.home_presentation.external.fakes.FakeAnalogueReporter
 import com.wmccd.home_presentation.external.fakes.FakeBookCountUseCase
 import com.wmccd.home_presentation.external.fakes.FakeRecordCountUseCase
-import com.wmccd.home_presentation.external.homescreen.event.CounterEvent
 import com.wmccd.home_presentation.external.homescreen.CounterViewModelImpl
+import com.wmccd.home_presentation.external.homescreen.event.CounterEvent
 import kotlinx.coroutines.test.runTest
-
+import org.junit.Assert.*
 import org.junit.Test
 import org.junit.runner.RunWith
-
-import org.junit.Assert.*
 import java.util.concurrent.CountDownLatch
 import java.util.concurrent.TimeUnit
 

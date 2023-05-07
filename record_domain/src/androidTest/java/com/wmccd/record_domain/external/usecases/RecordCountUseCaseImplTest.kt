@@ -3,16 +3,13 @@ package com.wmccd.record_domain.external.usecases
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.wmccd.record_domain.external.fakes.FakeAnalogueReporter
 import com.wmccd.record_domain.external.fakes.FakeRecordRepository
-import com.wmccd.record_domain.external.usescases.DeleteRecordUseCaseImpl
 import com.wmccd.record_domain.external.usescases.RecordCountUseCaseImpl
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.StandardTestDispatcher
 import kotlinx.coroutines.test.runTest
-
+import org.junit.Assert.*
 import org.junit.Test
 import org.junit.runner.RunWith
-
-import org.junit.Assert.*
 
 /**
  * Instrumented test, which will execute on an Android device.

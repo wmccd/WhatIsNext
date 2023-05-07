@@ -1,4 +1,4 @@
-package com.wmccd.datasource_services.internal.services.converters
+package com.wmccd.datasource_services.internal.converters
 
 import com.wmccd.common_models_types.external.models.weather.HourlyModel
 import com.wmccd.common_models_types.external.models.weather.HourlyUnitsModel

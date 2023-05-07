@@ -2,10 +2,8 @@ package com.wmccd.datasource_services.internal.services.weather
 
 import com.wmccd.datasource_services.internal.services.weather.models.WeatherResponse
 import retrofit2.Response
-import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.HeaderMap
-import retrofit2.http.Query
 import retrofit2.http.QueryMap
 
 internal interface WeatherApi {
