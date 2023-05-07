@@ -8,14 +8,13 @@ import com.wmccd.common_models_types.external.types.ResponseType
 import com.wmccd.common_models_types.external.types.request.RequestContentType
 import com.wmccd.common_models_types.external.types.request.RequestMethodType
 import com.wmccd.weather_repository.external.WeatherAtLocationRepository
-import com.wmccd.weather_repository.external.WeatherLocationRepository
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.withContext
 
 class WeatherAtLocationUseCaseImpl(
-    private val weatherLocationRepository: WeatherLocationRepository,
+    private val weatherLocationUseCase: WeatherLocationUseCase,
     private val weatherAtLocationRepository: WeatherAtLocationRepository,
     private val analogueReporter: AnalogueReporter,
     private val dispatcher: CoroutineDispatcher = Dispatchers.IO
@@ -23,9 +22,9 @@ class WeatherAtLocationUseCaseImpl(
     override suspend fun execute(
         success: (WeatherModel)-> Unit,
         failure: () -> Unit
-    ) {
+    ){
         withContext(dispatcher) {
-            val locationModel = weatherLocationRepository.location.first()
+            val locationModel = weatherLocationUseCase.execute().first()
             val queryParameters = hashMapOf<String, String>()
             queryParameters["latitude"] = locationModel.latitude.toString()
             queryParameters["longitude"] = locationModel.longitude.toString()
@@ -44,7 +43,7 @@ class WeatherAtLocationUseCaseImpl(
                     val response = it as ResponseType.WeatherAtLocationResponse
                     success(response.weatherModel)
                 },
-                failure = { _, _ ->
+                failure = {
                     failure()
                 }
             )

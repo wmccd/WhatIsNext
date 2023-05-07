@@ -25,18 +25,18 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import com.wmccd.common_ui.external.values.Padding
 import com.wmccd.common_ui.external.views.LabelAndValue
-import com.wmccd.home_presentation.external.homescreen.CounterViewModel
+import com.wmccd.home_presentation.external.homescreen.HomeViewModel
 import com.wmccd.home_presentation.external.homescreen.event.CounterEvent
-import com.wmccd.home_presentation.external.homescreen.state.CounterState
-import com.wmccd.home_presentation.external.homescreen.state.CounterStateWhenDisplaying
-import com.wmccd.home_presentation.external.homescreen.state.CounterStateWhenErroring
-import com.wmccd.home_presentation.external.homescreen.state.CounterStateWhenLoading
+import com.wmccd.home_presentation.external.homescreen.state.HomeState
+import com.wmccd.home_presentation.external.homescreen.state.HomeStateWhenDisplaying
+import com.wmccd.home_presentation.external.homescreen.state.HomeStateWhenErroring
+import com.wmccd.home_presentation.external.homescreen.state.HomeStateWhenLoading
 
 const val HomeScreenTestTag = "HomeScreen"
 
 @Composable
 fun HomeScreen(
-    counterViewModel: CounterViewModel
+    counterViewModel: HomeViewModel
 ){
 
     Box(
@@ -47,16 +47,16 @@ fun HomeScreen(
     ) {
 
         when (counterViewModel.currentState.value) {
-            is CounterState.Loading -> Loading(
+            is HomeState.Loading -> Loading(
                 counterViewModel.uiLoadingState.value
             )
 
-            is CounterState.Displaying -> Displaying(
+            is HomeState.Displaying -> Displaying(
                 counterViewModel.uiDisplayState.value,
                 counterViewModel::onEvent
             )
 
-            is CounterState.Erroring -> Erroring(
+            is HomeState.Erroring -> Erroring(
                 counterViewModel.uiErroringState.value
             )
         }
@@ -66,7 +66,7 @@ fun HomeScreen(
 
 @Composable
 private fun Loading(
-    state: CounterStateWhenLoading
+    state: HomeStateWhenLoading
 ){
     Row(
         modifier = Modifier.fillMaxWidth(),
@@ -85,7 +85,7 @@ private fun Loading(
 
 @Composable
 private fun Erroring(
-    state: CounterStateWhenErroring
+    state: HomeStateWhenErroring
 ){
     Row(
         modifier = Modifier.fillMaxWidth(),
@@ -105,7 +105,7 @@ private fun Erroring(
 
 @Composable
 private fun Displaying(
-    state: CounterStateWhenDisplaying,
+    state: HomeStateWhenDisplaying,
     onEvent: (CounterEvent)-> Unit
 ){
     Column(
@@ -137,6 +137,9 @@ private fun Displaying(
                 valueText = state.recordCount.toString()
             )
             Spacer(modifier = Modifier.height(Padding.xlarge))
+
+            Text(text = state.weatherLocation)
+            Text(text = state.weatherAtLocation)
         }
         Row(
             modifier = Modifier.fillMaxWidth(),
@@ -161,19 +164,19 @@ private fun Displaying(
 @Preview(name = "FontScale", fontScale = 2f)
 @Preview(name = "System", showSystemUi = true)
 private fun PreviewLoading(){
-    class FakeCounterViewModel():CounterViewModel{
+    class FakeHomeViewModel():HomeViewModel{
 
-        override val currentState: State<CounterState> = mutableStateOf(CounterState.Loading)
-        override val uiLoadingState: State<CounterStateWhenLoading> = mutableStateOf(
-            CounterStateWhenLoading(
+        override val currentState: State<HomeState> = mutableStateOf(HomeState.Loading)
+        override val uiLoadingState: State<HomeStateWhenLoading> = mutableStateOf(
+            HomeStateWhenLoading(
                 message = "Loading this thing..."
             )
         )
-        override val uiDisplayState: State<CounterStateWhenDisplaying> = mutableStateOf(CounterStateWhenDisplaying())
-        override val uiErroringState: State<CounterStateWhenErroring> = mutableStateOf(CounterStateWhenErroring())
+        override val uiDisplayState: State<HomeStateWhenDisplaying> = mutableStateOf(HomeStateWhenDisplaying())
+        override val uiErroringState: State<HomeStateWhenErroring> = mutableStateOf(HomeStateWhenErroring())
         override fun onEvent(event: CounterEvent) {}
     }
-    val fakeCounterViewModel = FakeCounterViewModel()
+    val fakeCounterViewModel = FakeHomeViewModel()
 
     Surface() {
         HomeScreen(counterViewModel = fakeCounterViewModel )
@@ -186,19 +189,19 @@ private fun PreviewLoading(){
 @Preview(name = "FontScale", fontScale = 2f)
 @Preview(name = "System", showSystemUi = true)
 private fun PreviewErroring(){
-    class FakeCounterViewModel():CounterViewModel{
+    class FakeHomeViewModel():HomeViewModel{
 
-        override val currentState: State<CounterState> = mutableStateOf(CounterState.Erroring)
-        override val uiLoadingState: State<CounterStateWhenLoading> = mutableStateOf(
-            CounterStateWhenLoading(
+        override val currentState: State<HomeState> = mutableStateOf(HomeState.Erroring)
+        override val uiLoadingState: State<HomeStateWhenLoading> = mutableStateOf(
+            HomeStateWhenLoading(
                 message = "Uh-oh. Something went wrong..."
             )
         )
-        override val uiDisplayState: State<CounterStateWhenDisplaying> = mutableStateOf(CounterStateWhenDisplaying())
-        override val uiErroringState: State<CounterStateWhenErroring> = mutableStateOf(CounterStateWhenErroring())
+        override val uiDisplayState: State<HomeStateWhenDisplaying> = mutableStateOf(HomeStateWhenDisplaying())
+        override val uiErroringState: State<HomeStateWhenErroring> = mutableStateOf(HomeStateWhenErroring())
         override fun onEvent(event: CounterEvent) {}
     }
-    val fakeCounterViewModel = FakeCounterViewModel()
+    val fakeCounterViewModel = FakeHomeViewModel()
 
     Surface() {
         HomeScreen(counterViewModel = fakeCounterViewModel )
@@ -211,11 +214,11 @@ private fun PreviewErroring(){
 @Preview(name = "FontScale", fontScale = 2f)
 @Preview(name = "System", showSystemUi = true)
 private fun PreviewDisplaying(){
-    class FakeCounterViewModel():CounterViewModel{
-        override val currentState: State<CounterState> = mutableStateOf(CounterState.Displaying)
-        override val uiLoadingState: State<CounterStateWhenLoading> = mutableStateOf(CounterStateWhenLoading())
-        override val uiDisplayState: State<CounterStateWhenDisplaying> = mutableStateOf(
-            CounterStateWhenDisplaying(
+    class FakeHomeViewModel():HomeViewModel{
+        override val currentState: State<HomeState> = mutableStateOf(HomeState.Displaying)
+        override val uiLoadingState: State<HomeStateWhenLoading> = mutableStateOf(HomeStateWhenLoading())
+        override val uiDisplayState: State<HomeStateWhenDisplaying> = mutableStateOf(
+            HomeStateWhenDisplaying(
                 title = "Your Collection",
                 bookCountLabel = "Book collection count",
                 bookCount = 88,
@@ -225,10 +228,10 @@ private fun PreviewDisplaying(){
                 backgroundColor = Color.LightGray
             )
         )
-        override val uiErroringState: State<CounterStateWhenErroring> = mutableStateOf(CounterStateWhenErroring())
+        override val uiErroringState: State<HomeStateWhenErroring> = mutableStateOf(HomeStateWhenErroring())
         override fun onEvent(event: CounterEvent) {}
     }
-    val fakeCounterViewModel = FakeCounterViewModel()
+    val fakeCounterViewModel = FakeHomeViewModel()
 
     Surface() {
         HomeScreen(counterViewModel = fakeCounterViewModel )

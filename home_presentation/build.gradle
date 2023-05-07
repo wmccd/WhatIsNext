@@ -49,6 +49,7 @@ dependencies {
     implementation project(path: ':analogue_reporter')
     implementation project(path: ':book_domain')
     implementation project(path: ':record_domain')
+    implementation project(path: ':weather_domain')
     implementation project(path: ':configuration')
     implementation project(path: ':configuration_keys')
 

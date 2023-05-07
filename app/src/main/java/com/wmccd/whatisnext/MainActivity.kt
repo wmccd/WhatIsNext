@@ -34,7 +34,7 @@ import com.wmccd.home.external.HomeScreen
 import com.wmccd.records.external.RecordScreen
 import com.wmccd.weather.WeatherScreen
 import com.wmccd.whatisnext.MyApp.Companion.appAnalogueReporter
-import com.wmccd.whatisnext.injection.CounterDependencyGenerator
+import com.wmccd.whatisnext.injection.HomeDependencyGenerator
 import com.wmccd.whatisnext.navigation.NavBarItems
 import com.wmccd.whatisnext.navigation.NavRoutes
 import com.wmccd.whatisnext.ui.theme.WhatIsNextTheme
@@ -90,7 +90,7 @@ fun NavigationHost(navController: NavHostController){
     ){
         composable(NavRoutes.Home.route)  {
             HomeScreen(
-                counterViewModel = CounterDependencyGenerator().generate()
+                counterViewModel = HomeDependencyGenerator().generate()
             )
         }
         composable(NavRoutes.Records.route)  {

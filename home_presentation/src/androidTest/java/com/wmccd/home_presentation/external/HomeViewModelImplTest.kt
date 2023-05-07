@@ -4,7 +4,11 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.wmccd.home_presentation.external.fakes.FakeAnalogueReporter
 import com.wmccd.home_presentation.external.fakes.FakeBookCountUseCase
 import com.wmccd.home_presentation.external.fakes.FakeRecordCountUseCase
-import com.wmccd.home_presentation.external.homescreen.CounterViewModelImpl
+import com.wmccd.home_presentation.external.fakes.FakeRemoteConfiguration
+import com.wmccd.home_presentation.external.fakes.FakeWeatherAtLocationUseCase
+import com.wmccd.home_presentation.external.fakes.FakeWeatherLocationUseCase
+import com.wmccd.home_presentation.external.homescreen.HomeUseCases
+import com.wmccd.home_presentation.external.homescreen.HomeViewModelImpl
 import com.wmccd.home_presentation.external.homescreen.event.CounterEvent
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.*
@@ -19,16 +23,23 @@ import java.util.concurrent.TimeUnit
  * See [testing documentation](http://d.android.com/tools/testing).
  */
 @RunWith(AndroidJUnit4::class)
-class CounterViewModelImplTest {
+class HomeViewModelImplTest {
+
+    private val homeUseCases = HomeUseCases(
+        bookCountUseCase = FakeBookCountUseCase(),
+        recordCountUseCase = FakeRecordCountUseCase(),
+        weatherLocationUseCase = FakeWeatherLocationUseCase(),
+        weatherAtLocationUseCase = FakeWeatherAtLocationUseCase()
+    )
 
     @Test
     fun state_bookCount_correct()= runTest{
 
         //assemble
-        val counterViewModelImpl = CounterViewModelImpl(
-            bookCountUseCase = FakeBookCountUseCase(),
-            recordCountUseCase = FakeRecordCountUseCase(),
-            analogueReporter = FakeAnalogueReporter()
+        val counterViewModelImpl = HomeViewModelImpl(
+            homeUseCases = homeUseCases,
+            analogueReporter = FakeAnalogueReporter(),
+            remoteConfiguration = FakeRemoteConfiguration()
         )
         val expected = 763
 
@@ -45,10 +56,10 @@ class CounterViewModelImplTest {
     fun state_recordCount_correct()= runTest{
 
         //assemble
-        val counterViewModelImpl = CounterViewModelImpl(
-            bookCountUseCase = FakeBookCountUseCase(),
-            recordCountUseCase = FakeRecordCountUseCase(),
-            analogueReporter = FakeAnalogueReporter()
+        val counterViewModelImpl = HomeViewModelImpl(
+            homeUseCases = homeUseCases,
+            analogueReporter = FakeAnalogueReporter(),
+            remoteConfiguration = FakeRemoteConfiguration()
         )
         val expected = 765
 
@@ -60,44 +71,23 @@ class CounterViewModelImplTest {
         assertEquals(expected, actual)
     }
 
+
     @Test
-    fun onEvent_recordCountTapped_handled()= runTest{
+    fun onEvent_colourButtonTapped_handled()= runTest{
 
         //assemble
         val analogueReporter = FakeAnalogueReporter()
 
-        val counterViewModelImpl = CounterViewModelImpl(
-            bookCountUseCase = FakeBookCountUseCase(),
-            recordCountUseCase = FakeRecordCountUseCase(),
-            analogueReporter = analogueReporter
+        val counterViewModelImpl = HomeViewModelImpl(
+            homeUseCases = homeUseCases,
+            analogueReporter = analogueReporter,
+            remoteConfiguration = FakeRemoteConfiguration()
         )
-        val expected = "Presentation: tapped record count"
+        val expected = "Presentation: colour change"
 
         //act
         counterViewModelImpl.onEvent(
-            counterEvent = CounterEvent.OnRecordCountTapped
-        )
-
-        //assert
-        assertTrue(analogueReporter.lastInvokedList.contains(expected))
-    }
-
-    @Test
-    fun onEvent_bookCountTapped_handled()= runTest{
-
-        //assemble
-        val analogueReporter = FakeAnalogueReporter()
-
-        val counterViewModelImpl = CounterViewModelImpl(
-            bookCountUseCase = FakeBookCountUseCase(),
-            recordCountUseCase = FakeRecordCountUseCase(),
-            analogueReporter = analogueReporter
-        )
-        val expected = "Presentation: tapped book count"
-
-        //act
-        counterViewModelImpl.onEvent(
-            counterEvent = CounterEvent.OnBookCountTapped
+            counterEvent = CounterEvent.OnColorChangeButtonTapped
         )
 
         //assert

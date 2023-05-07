@@ -5,11 +5,13 @@ import com.wmccd.common_models_types.external.models.weather.LocationModel
 import com.wmccd.weather_repository.external.WeatherLocationRepository
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 
 class WeatherLocationUseCaseImpl(
     private val weatherLocationRepository: WeatherLocationRepository,
     private val analogueReporter: AnalogueReporter,
     private val dispatcher: CoroutineDispatcher
 ): WeatherLocationUseCase {
-    override val location: Flow<LocationModel> = weatherLocationRepository.location
+    override fun execute(): Flow<LocationModel> = weatherLocationRepository.location
+
 }

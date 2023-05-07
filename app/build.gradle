@@ -81,6 +81,9 @@ dependencies {
     implementation project(path: ':configuration_keys')
     implementation project(path: ':configuration')
     implementation project(path: ':common_ui')
+    implementation project(path: ':datasource_services')
+    implementation project(path: ':weather_domain')
+    implementation project(path: ':weather_repository')
 
 
     testImplementation "junit:junit:$junit_junit_version"

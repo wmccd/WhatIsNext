@@ -13,12 +13,11 @@ class WeatherLocationRepositoryImpl  (
     private val dataSource: WeatherLocationDataSource,
     private val analogueReporter: AnalogueReporter,
     private val dispatcher: CoroutineDispatcher = Dispatchers.IO,
-): WeatherLocationDataSource {
+): WeatherLocationRepository {
 
+    override val location: Flow<LocationModel> = dataSource.weatherLocationModel
 
-    override val weatherLocationModel: Flow<LocationModel> = dataSource.weatherLocationModel
-
-    override suspend fun weatherLocation(locationModel: LocationModel) {
+    override suspend fun location(locationModel: LocationModel) {
         analogueReporter.report(
             action = AnalogueAction.Trace(
                 tag = "${this::class.simpleName}",

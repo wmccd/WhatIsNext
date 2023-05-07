@@ -2,23 +2,23 @@ package com.wmccd.whatisnext.home.fakes
 
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
-import com.wmccd.home_presentation.external.homescreen.CounterViewModel
+import com.wmccd.home_presentation.external.homescreen.HomeViewModel
 import com.wmccd.home_presentation.external.homescreen.event.CounterEvent
-import com.wmccd.home_presentation.external.homescreen.state.CounterState
-import com.wmccd.home_presentation.external.homescreen.state.CounterStateWhenDisplaying
-import com.wmccd.home_presentation.external.homescreen.state.CounterStateWhenErroring
-import com.wmccd.home_presentation.external.homescreen.state.CounterStateWhenLoading
+import com.wmccd.home_presentation.external.homescreen.state.HomeState
+import com.wmccd.home_presentation.external.homescreen.state.HomeStateWhenDisplaying
+import com.wmccd.home_presentation.external.homescreen.state.HomeStateWhenErroring
+import com.wmccd.home_presentation.external.homescreen.state.HomeStateWhenLoading
 
-class FakeErroringViewModel(): CounterViewModel {
-    override val currentState: State<CounterState> = mutableStateOf(CounterState.Erroring)
-    override val uiLoadingState: State<CounterStateWhenLoading> = mutableStateOf(
-        CounterStateWhenLoading()
+class FakeErroringViewModel(): HomeViewModel {
+    override val currentState: State<HomeState> = mutableStateOf(HomeState.Erroring)
+    override val uiLoadingState: State<HomeStateWhenLoading> = mutableStateOf(
+        HomeStateWhenLoading()
     )
-    override val uiDisplayState: State<CounterStateWhenDisplaying> = mutableStateOf(
-        CounterStateWhenDisplaying()
+    override val uiDisplayState: State<HomeStateWhenDisplaying> = mutableStateOf(
+        HomeStateWhenDisplaying()
     )
-    override val uiErroringState: State<CounterStateWhenErroring> = mutableStateOf(
-        CounterStateWhenErroring(
+    override val uiErroringState: State<HomeStateWhenErroring> = mutableStateOf(
+        HomeStateWhenErroring(
             message = "ERRORING"
         )
     )

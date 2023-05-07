@@ -8,11 +8,11 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class WeatherLocationUpdateImpl(
+class WeatherLocationUpdateUseCaseImpl(
     private val weatherLocationRepository: WeatherLocationRepository,
     private val analogueReporter: AnalogueReporter,
     private val dispatcher: CoroutineDispatcher = Dispatchers.IO
-): WeatherLocationUpdate {
+): WeatherLocationUpdateUseCase {
     override suspend fun execute(locationModel: LocationModel) {
 
         analogueReporter.report(

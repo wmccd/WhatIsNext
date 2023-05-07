@@ -7,7 +7,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.wmccd.home.external.HomeScreen
 import com.wmccd.whatisnext.home.fakes.FakeDisplayingViewModel
 import com.wmccd.whatisnext.home.fakes.FakeErroringViewModel
-import com.wmccd.whatisnext.home.fakes.FakeLoadingCounterViewModel
+import com.wmccd.whatisnext.home.fakes.FakeLoadingHomeViewModel
 import org.junit.Assert.*
 import org.junit.Rule
 import org.junit.Test
@@ -59,7 +59,7 @@ class HomeScreenTest {
         // act
         composeTestRule.setContent {
             HomeScreen(
-                counterViewModel = FakeLoadingCounterViewModel()
+                counterViewModel = FakeLoadingHomeViewModel()
             )
         }
 

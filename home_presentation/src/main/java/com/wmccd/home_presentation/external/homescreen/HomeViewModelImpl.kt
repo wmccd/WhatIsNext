@@ -9,54 +9,61 @@ import androidx.lifecycle.viewModelScope
 import com.wmccd.analogue_reporter.external.AnalogueAction
 import com.wmccd.analogue_reporter.external.AnalogueReporter
 import com.wmccd.book_domain.external.usecases.BookCountUseCase
+import com.wmccd.common_models_types.external.models.weather.WeatherModel
 import com.wmccd.configuration.external.RemoteConfiguration
 import com.wmccd.configuration_keys.external.TextConfigurationKeys
 import com.wmccd.home_presentation.external.homescreen.event.CounterEvent
-import com.wmccd.home_presentation.external.homescreen.state.CounterState
-import com.wmccd.home_presentation.external.homescreen.state.CounterStateWhenDisplaying
-import com.wmccd.home_presentation.external.homescreen.state.CounterStateWhenErroring
-import com.wmccd.home_presentation.external.homescreen.state.CounterStateWhenLoading
+import com.wmccd.home_presentation.external.homescreen.state.HomeState
+import com.wmccd.home_presentation.external.homescreen.state.HomeStateWhenDisplaying
+import com.wmccd.home_presentation.external.homescreen.state.HomeStateWhenErroring
+import com.wmccd.home_presentation.external.homescreen.state.HomeStateWhenLoading
 import com.wmccd.record_domain.external.usescases.RecordCountUseCase
+import com.wmccd.weather_domain.external.WeatherAtLocationUseCase
+import com.wmccd.weather_domain.external.WeatherLocationUseCase
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
-class CounterViewModelImpl(
-    private val bookCountUseCase: BookCountUseCase,
-    private val recordCountUseCase: RecordCountUseCase,
+class HomeViewModelImpl(
+    private val homeUseCases: HomeUseCases,
     private val analogueReporter: AnalogueReporter,
     private val remoteConfiguration: RemoteConfiguration
-): CounterViewModel, ViewModel() {
+): HomeViewModel, ViewModel() {
+
+    init{
+        fetchWeatherAtLocation()
+    }
 
     /** State **/
-    private var _currentState:MutableState<CounterState> = mutableStateOf(CounterState.Loading)
-    override val currentState: State<CounterState> = _currentState
+
+    private var _currentState:MutableState<HomeState> = mutableStateOf(HomeState.Loading)
+    override val currentState: State<HomeState> = _currentState
 
     private val _uiLoadingState = mutableStateOf(
-        CounterStateWhenLoading(
+        HomeStateWhenLoading(
             message = remoteConfiguration.fetch(TextConfigurationKeys.ScreenLoading.loadingMessage, "")
         )
     )
-    override val uiLoadingState: State<CounterStateWhenLoading> = _uiLoadingState
+    override val uiLoadingState: State<HomeStateWhenLoading> = _uiLoadingState
 
     private val _uiDisplayingState = mutableStateOf(
-        CounterStateWhenDisplaying(
+        HomeStateWhenDisplaying(
             title = remoteConfiguration.fetch(TextConfigurationKeys.HomeScreen.title, ""),
             bookCountLabel = remoteConfiguration.fetch(TextConfigurationKeys.HomeScreen.bookCountLabel, ""),
             recordCountLabel = remoteConfiguration.fetch(TextConfigurationKeys.HomeScreen.recordCountLabel, ""),
             buttonLabel = remoteConfiguration.fetch(TextConfigurationKeys.HomeScreen.changeColorButtonLabel, ""),
         )
     )
-    override val uiDisplayState: State<CounterStateWhenDisplaying> = _uiDisplayingState
+    override val uiDisplayState: State<HomeStateWhenDisplaying> = _uiDisplayingState
 
     private val _uiErroringState = mutableStateOf(
-        CounterStateWhenErroring(
+        HomeStateWhenErroring(
             message = remoteConfiguration.fetch(TextConfigurationKeys.ScreenErroring.erroringMessage, "")
         )
     )
-    override val uiErroringState: State<CounterStateWhenErroring> = _uiErroringState
+    override val uiErroringState: State<HomeStateWhenErroring> = _uiErroringState
 
-
-    private val bookCountObserver = viewModelScope.launch {
-        bookCountUseCase.execute().collect{
+    private val bookCountObserverJob = viewModelScope.launch {
+        homeUseCases.bookCountUseCase.execute().collect{
 
             analogueReporter.report(
                 action = AnalogueAction.Trace(
@@ -67,15 +74,15 @@ class CounterViewModelImpl(
                 )
             )
 
-            _currentState.value = CounterState.Displaying
+            _currentState.value = HomeState.Displaying
             _uiDisplayingState.value = _uiDisplayingState.value.copy(
                 bookCount = it
             )
         }
     }
 
-    private val recordCountObserver = viewModelScope.launch {
-        recordCountUseCase.execute().collect{
+    private val recordCountObserverJob = viewModelScope.launch {
+        homeUseCases.recordCountUseCase.execute().collect{
 
             analogueReporter.report(
                 action = AnalogueAction.Trace(
@@ -92,6 +99,47 @@ class CounterViewModelImpl(
         }
     }
 
+    private val weatherLocationObserverJob = viewModelScope.launch {
+        homeUseCases.weatherLocationUseCase.execute().collect(){
+
+            analogueReporter.report(
+                action = AnalogueAction.Trace(
+                    tag = "${this::class.simpleName}",
+                    whatHappened = "Presentation: weather location",
+                    key = "location",
+                    value = "it"
+                )
+            )
+
+            _uiDisplayingState.value = _uiDisplayingState.value.copy(
+                weatherLocation = "Latitude:<${it.latitude}> Longitude:<${it.longitude}>"
+            )
+        }
+    }
+
+    private fun fetchWeatherAtLocation(){
+
+        fun success(weatherModel: WeatherModel){
+            _uiDisplayingState.value = _uiDisplayingState.value.copy(
+                weatherAtLocation = "Updates available <${weatherModel.hourly.time.size}>"
+            )
+        }
+
+        fun failure(){
+            _uiDisplayingState.value = _uiDisplayingState.value.copy(
+                weatherAtLocation = "No updates available"
+            )
+        }
+
+        viewModelScope.launch {
+            homeUseCases.weatherAtLocationUseCase.execute(
+                success = ::success,
+                failure = ::failure
+            )
+        }
+    }
+
+
 
     /** Events **/
     override fun onEvent(counterEvent: CounterEvent) {
@@ -105,7 +153,7 @@ class CounterViewModelImpl(
         analogueReporter.report(
             action = AnalogueAction.Trace(
                 tag = "${this::class.simpleName}",
-                whatHappened = "Presentation: colour change ",
+                whatHappened = "Presentation: colour change",
             )
         )
 
