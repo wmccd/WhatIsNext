@@ -29,9 +29,7 @@ class HomeViewModelImpl(
     private val remoteConfiguration: RemoteConfiguration
 ): HomeViewModel, ViewModel() {
 
-    init{
-        fetchWeatherAtLocation()
-    }
+
 
     /** State **/
 
@@ -107,7 +105,7 @@ class HomeViewModelImpl(
                     tag = "${this::class.simpleName}",
                     whatHappened = "Presentation: weather location",
                     key = "location",
-                    value = "it"
+                    value = "$it"
                 )
             )
 
@@ -149,6 +147,8 @@ class HomeViewModelImpl(
     }
 
     private fun handleOnColorChangeButtonTapped() {
+
+        fetchWeatherAtLocation()
 
         analogueReporter.report(
             action = AnalogueAction.Trace(

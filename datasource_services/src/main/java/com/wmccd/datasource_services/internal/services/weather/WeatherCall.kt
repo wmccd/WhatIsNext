@@ -1,26 +1,55 @@
 package com.wmccd.datasource_services.internal.services.weather
 
 import android.util.Log
+import com.wmccd.analogue_reporter.external.AnalogueAction
+import com.wmccd.analogue_reporter.external.AnalogueReporter
 import com.wmccd.common_models_types.external.models.request.RequestModel
 import com.wmccd.common_models_types.external.models.weather.WeatherModel
 import com.wmccd.common_models_types.external.types.ResponseType
 import com.wmccd.datasource_services.internal.converters.ConvertWeatherServiceAndCommonModels
 import com.wmccd.datasource_services.internal.vendors.retrofit.RetrofitHelper
 
-class WeatherCall {
+class WeatherCall(
+    private val analogueReporter: AnalogueReporter,
+) {
+
+    private val weatherApi =  WeatherApi::class.java
     suspend fun execute(requestModel: RequestModel){
         val weatherApi = RetrofitHelper
             .instance(requestModel.urlDomain)
-            .create(WeatherApi::class.java)
-        val result = weatherApi.weather(
+            .create(weatherApi)
+
+        analogueReporter.report(
+            action = AnalogueAction.Trace(
+                tag = "${this::class.simpleName}",
+                whatHappened = "Before Service Call",
+                key = "Request model?",
+                value = "$requestModel"
+            )
+        )
+
+        val result = weatherApi.invoke(
             headers = requestModel.headers,
             queryParameters = requestModel.queryParameters
         )
 
-        Log.d("XXX", "HERE1")
+        analogueReporter.report(
+            action = AnalogueAction.Trace(
+                tag = "${this::class.simpleName}",
+                whatHappened = "After Service Call",
+                key = "Call succeeded?",
+                value = ": ${result.isSuccessful}"
+            )
+        )
         if(!result.isSuccessful) {
-            Log.d("XXX", "HERE2")
-
+            analogueReporter.report(
+                action = AnalogueAction.Trace(
+                    tag = "${this::class.simpleName}",
+                    whatHappened = "After Service Call",
+                    key = "Call Failure Details",
+                    value = "<${result.code()}><${result.message()}>"
+                )
+            )
             requestModel.failure(
                 ResponseType.ErrorResponse(
                     code = result.code(),

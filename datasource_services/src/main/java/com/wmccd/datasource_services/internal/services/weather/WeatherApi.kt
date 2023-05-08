@@ -9,11 +9,8 @@ import retrofit2.http.QueryMap
 internal interface WeatherApi {
 
     @GET("forecast")
-    suspend fun weather(
+    suspend fun invoke(
         @HeaderMap()headers: HashMap<String, String>,
         @QueryMap(encoded = false)queryParameters: HashMap<String, String>,
-//        @Query("latitude")latitude: String,
-//        @Query("longitude")longitude: String,
-//        @Query("hourly")hourly: String,
-    ) : Response<WeatherResponse>
+    ):Response<WeatherResponse>
 }

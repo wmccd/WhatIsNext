@@ -26,15 +26,15 @@ class WeatherAtLocationUseCaseImpl(
         withContext(dispatcher) {
             val locationModel = weatherLocationUseCase.execute().first()
             val queryParameters = hashMapOf<String, String>()
-            queryParameters["latitude"] = locationModel.latitude.toString()
-            queryParameters["longitude"] = locationModel.longitude.toString()
+            queryParameters["latitude"] = "54.5036169"//locationModel.latitude.toString()
+            queryParameters["longitude"] = "-5.7976228" //locationModel.longitude.toString()
             queryParameters["hourly"] = "temperature_2m,precipitation_probability"
 
             val requestModel = RequestModel(
                 methodType = RequestMethodType.GET,
                 contentType = RequestContentType.ApplicationJson,
-                urlDomain = "https://api.open-meteo.com",
-                urlPath = "/v1/forcast",
+                urlDomain = "https://api.open-meteo.com/v1/",
+                urlPath = "forcast",
                 headers = hashMapOf(),
                 queryParameters = queryParameters,
                 bodyMap = hashMapOf(),

@@ -11,6 +11,8 @@ import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.NavigationBar
+import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -115,11 +117,13 @@ fun NavigationHost(navController: NavHostController){
 
 @Composable
 fun BottomNavigationBar(navController: NavHostController){
-    BottomNavigation {
+    NavigationBar(
+        containerColor = MaterialTheme.colorScheme.secondary
+    ) {
         val backStackEntry by navController.currentBackStackEntryAsState()
         val currentRoute = backStackEntry?.destination?.route
         NavBarItems.BarItems.forEach { navItem ->
-            BottomNavigationItem(
+            NavigationBarItem(
                 selected = currentRoute == navItem.route,
                 onClick = {
                     navController.navigate(
